@@ -152,11 +152,8 @@ class AmiiboDump(NTAG215):
                     'Amiibo data is at least 520 bytes'
                 ).format(self.size))
         if self.size > 540:
-            raise AmiiboDumpSizeError(
-                (
-                    'Invalid dump. Have {} bytes, '
-                    'NTAG 215 is 540 bytes'
-                ).format(self.size))
+            self.size = 540
+            
 
         super().__init__()
         self.data[:len(dump)] = dump
