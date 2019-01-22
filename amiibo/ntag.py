@@ -219,14 +219,27 @@ class NTAGBase:
         """Unset all static block-locking and page-locking (default values).
         (8.5.2 Static lock bytes (NTAG21x))
         """
-        self.data[11] = 0
-        self.data[10] = 0
+        #self.data[11] = 0
+        #self.data[10] = 0
+
+
 
     def unset_dynamic_lock_bytes(self):
         """Unset all dynamic page-locking (default values).
         (8.5.3 Dynamic Lock Bytes)
         """
         self._dynamic_lock_bytes = b'\x00\x00\x00'
+
+        self.data[0x208] = 1
+        self.data[0x209] = 0
+        self.data[0x20A] = 15
+
+        self.data[0x214] = 0
+        self.data[0x215] = 0
+        self.data[0x216] = 0
+        self.data[0x217] = 0
+        self.data[0x218] = 0
+        self.data[0x219] = 0
 
     def unset_lock_bytes(self):
         """Unset static and dynamic lock bytes.

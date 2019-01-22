@@ -150,10 +150,7 @@ class AmiiboDump(NTAG215):
                 (
                     'Incomplete dump. Have {} bytes, '
                     'Amiibo data is at least 520 bytes'
-                ).format(self.size))
-        if self.size > 540:
-            self.size = 540
-            
+                ).format(self.size))        
 
         super().__init__()
         self.data[:len(dump)] = dump
